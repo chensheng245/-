@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#173f35"/>
+  <circle cx="32" cy="32" r="20" fill="#f5efe2"/>
+  <circle cx="32" cy="32" r="16.5" fill="none" stroke="#c8a15a" stroke-width="1"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Yu Mincho, Hiragino Mincho ProN, serif" font-size="27" fill="#2f6652">言</text>
+  <path d="M49 12c4 2 6 5 6 9-4 0-7-2-8-6" fill="#b9503b"/>
+</svg>

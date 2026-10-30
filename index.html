@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F0E6">
+  <meta name="description" content="ことばの森 — 按场景与章节学习 JLPT N5、N4、N3、N2 日语词汇，共 4656 词。包含单词与例句朗读、闪卡、词汇库、错词集、已掌握、小测验与本地学习进度。">
+  <title>ことばの森 · 按场景学日语 | JLPT N5–N2</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="ことばの森 首页">
+        <span class="brand-mark">言</span>
+        <span class="brand-text">
+          <strong>ことばの森</strong>
+          <small>KOTOBA NO MORI</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#scenes">场景学习</a>
+        <a href="#library">词汇库</a>
+        <a href="#quiz">小测验</a>
+        <a href="#quiz" id="wrongBookNav">错词集 <span class="nav-count" id="navWrongCount">0</span></a>
+        <a href="#quiz" id="masteredNav">已掌握 <span class="nav-count" id="navMasteredCount">0</span></a>
+      </nav>
+
+      <div class="header-tools">
+        <div class="today-chip" title="今天标记为已掌握的词数">
+          <span class="today-dot" aria-hidden="true"></span>
+          <span>今日</span>
+          <strong id="todayCount">0</strong>
+          <span>词</span>
+        </div>
+        <a class="header-link" href="#levels">
+          开始学习
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-rule"></span>日语场景词汇笔记 · KOTOBA NO MORI</p>
+          <h1>把日语，<br><em>放回生活里。</em></h1>
+          <p class="hero-lead">从 N5 到 N2，按场景拾起每一个词。不只记意思，也记住它出现的那个瞬间——在餐桌、车站，或某个下雨的午后。</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#levels">
+              开始今日学习
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg>
+            </a>
+            <button class="btn btn-plain" id="randomWordBtn" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h2.5c4 0 3.5 8 7.5 8H16M13 3l3 3-3 3M4 14h2.5c1.2 0 2-1 2.7-2.2M13 11l3 3-3 3"/></svg>
+              随机抽一词
+            </button>
+          </div>
+
+          <div class="hero-stats" aria-label="网站数据">
+            <div><strong id="statLevels">4</strong><span>JLPT 等级</span></div>
+            <span class="stat-divider" aria-hidden="true"></span>
+            <div><strong id="statScenes">42</strong><span>场景主题</span></div>
+            <span class="stat-divider" aria-hidden="true"></span>
+            <div><strong id="statWords">4656</strong><span>精选单词</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <span class="vertical-note" aria-hidden="true">言葉を、暮らしへ。</span>
+          <article class="word-card" aria-labelledby="heroWord">
+            <span class="washi-tape" aria-hidden="true"></span>
+            <div class="word-card-head">
+              <span>今日の一語</span>
+              <time id="heroDate">10.27</time>
+            </div>
+            <div class="word-title-row">
+              <h2 id="heroWord" lang="ja">おはよう</h2>
+              <button class="speak-btn" id="todayAudioBtn" type="button" aria-label="朗读今日单词">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5Z"/><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></svg>
+              </button>
+            </div>
+            <p class="word-reading" id="heroReading" lang="ja">おはよう</p>
+            <p class="word-meaning" id="heroMeaning">早上好</p>
+            <div class="word-example">
+              <span class="example-mark">例</span>
+              <div>
+                <p id="heroExample" lang="ja">先生、おはようございます。</p>
+                <p class="example-zh" id="heroExampleZh">老师，早上好。</p>
+              </div>
+              <button class="example-audio" id="todayExampleAudioBtn" type="button" aria-label="朗读今日例句">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5Z"/><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></svg>
+              </button>
+            </div>
+            <div class="word-card-foot">
+              <span id="heroMeta">N5 · あいさつ</span>
+              <button class="mark-btn" id="todayMarkBtn" type="button" aria-pressed="false">
+                <span class="mark-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="m3.5 8 3 3 6-6"/></svg>
+                </span>
+                <span id="todayMarkText">标记已学</span>
+              </button>
+            </div>
+            <span class="hanko" aria-hidden="true">語</span>
+          </article>
+          <p class="card-note">每天一个词，慢慢把森林种满。</p>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"><span></span>SCROLL</div>
+    </section>
+
+    <section class="section levels-section" id="levels">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker"><span>01</span> LEVEL</p>
+            <h2>选择你的学习阶梯</h2>
+          </div>
+          <p class="section-desc">N5 到 N2，每个等级都有独立的场景词库。<br>点击切换，学习进度会自动保存在本地。</p>
+        </div>
+        <div class="level-grid" id="levelGrid"></div>
+      </div>
+    </section>
+
+    <section class="section scene-section" id="scenes">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker"><span>02</span> SCENES</p>
+            <h2>按场景，拾起单词</h2>
+          </div>
+          <div class="scene-head-tools">
+            <span class="active-level-badge" id="activeLevelBadge">N5 · はじまり</span>
+            <button class="btn btn-small btn-outline" id="reviewBtn" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h2.5c4 0 3.5 8 7.5 8H16M13 3l3 3-3 3"/></svg>
+              随机复习 10 词
+            </button>
+          </div>
+        </div>
+        <div class="scene-grid" id="sceneGrid"></div>
+      </div>
+    </section>
+
+    <section class="section library-section" id="library">
+      <div class="shell">
+        <div class="section-head library-head">
+          <div>
+            <p class="section-kicker"><span>03</span> VOCABULARY</p>
+            <h2>词汇库</h2>
+            <p class="section-sub">当前等级的全部单词，按场景、掌握状态或关键词筛选。</p>
+          </div>
+          <label class="search-box" for="searchInput">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+            <input id="searchInput" type="search" placeholder="搜索日语、假名或中文…" aria-label="搜索日语单词、假名或中文释义" autocomplete="off" spellcheck="false">
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="library-toolbar">
+          <div class="filter-chips" id="sceneFilters" role="group" aria-label="按场景筛选"></div>
+          <div class="library-filter-right">
+            <label class="section-filter" id="sectionFilterWrap" hidden>
+              <span id="sectionFilterLabel">N5 小节</span>
+              <select id="sectionFilter" aria-label="按 N5 小节筛选"></select>
+            </label>
+            <div class="status-toggle" id="statusToggle" role="group" aria-label="按掌握状态筛选">
+              <button type="button" class="is-active" data-status="all" aria-pressed="true">全部</button>
+              <button type="button" data-status="unmastered" aria-pressed="false">未掌握</button>
+              <button type="button" data-status="unlearned" aria-pressed="false">未学习</button>
+              <button type="button" data-status="learned" aria-pressed="false">已掌握</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="library-meta">
+          <span id="resultCount">N5 · 888 个单词</span>
+          <span class="hint-tip">绿色已掌握 · 红色未掌握 · 点击右侧圆圈切换</span>
+        </div>
+
+        <div class="word-list" id="wordList"></div>
+        <div class="load-more-wrap" id="loadMoreWrap" hidden>
+          <button class="btn btn-small btn-outline" id="loadMoreBtn" type="button">
+            显示更多单词 <span id="loadMoreCount"></span>
+          </button>
+        </div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-mark">空</span>
+          <h3>没有找到这个词</h3>
+          <p>换一个关键词，或把筛选条件放宽一点。</p>
+          <button class="btn btn-small btn-outline" id="resetFiltersBtn" type="button">清除筛选</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="shell">
+        <div class="quiz-banner">
+          <div class="quiz-copy">
+            <p class="section-kicker light"><span>04</span> QUIZ</p>
+            <h2>把认识的词，<br>真正用起来。</h2>
+            <p>从 <strong id="quizLevelLabel">N5</strong> 词库随机抽 10 题。答错或选择「不会」，都会自动收进错词集。</p>
+            <div class="quiz-stats">
+              <div><span>当前掌握</span><strong id="quizMastered">0 / 888</strong></div>
+              <div><span>最佳成绩</span><strong id="quizBest">—</strong></div>
+            </div>
+            <div class="quiz-collections">
+              <button class="quiz-wrongbook" id="openMasteredBtn" type="button">
+                <span>已掌握</span>
+                <strong id="masteredCount">0</strong>
+                <span class="quiz-wrongbook-action">查看 →</span>
+              </button>
+              <button class="quiz-wrongbook" id="openWrongBookBtn" type="button">
+                <span>错词集</span>
+                <strong id="wrongCount">0</strong>
+                <span class="quiz-wrongbook-action">查看 →</span>
+              </button>
+            </div>
+          </div>
+          <div class="quiz-start">
+            <div class="quiz-stamp" aria-hidden="true"><span>10</span><small>問</small></div>
+            <button class="btn btn-cream" id="startQuizBtn" type="button">
+              开始小测
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg>
+            </button>
+            <p>约 2 分钟 · 随时可以停</p>
+          </div>
+          <span class="quiz-orbit orbit-one" aria-hidden="true"></span>
+          <span class="quiz-orbit orbit-two" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark small">言</span>
+        <div><strong>ことばの森</strong><span>用场景，记住日语。</span></div>
+      </div>
+      <p>学习记录只保存在当前浏览器 · 词汇释义与例句仅供学习参考</p>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
+  </footer>
+
+  <!-- 学习闪卡 -->
+  <div class="modal" id="studyModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel study-panel" role="dialog" aria-modal="true" aria-labelledby="studyTitle">
+      <header class="modal-head">
+        <div>
+          <p class="modal-kicker" id="studyKicker">N5 · SCENE 01</p>
+          <h2 id="studyTitle">あいさつ</h2>
+          <p class="modal-sub" id="studySubtitle">日常问候</p>
+        </div>
+        <button class="close-btn" type="button" data-close aria-label="关闭学习卡片">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="study-body" id="studyBody">
+        <div class="study-scopes" id="studyScopes" hidden></div>
+        <div class="study-progress">
+          <div class="progress-label"><span id="studyCount">1 / 5</span><span id="studyLearnedCount">0 已掌握</span></div>
+          <div class="progress-track"><i id="studyBar"></i></div>
+        </div>
+
+        <div class="flashcard-layout">
+          <button class="arrow-btn" id="prevCard" type="button" aria-label="上一个词">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg>
+          </button>
+
+          <div class="flashcard" id="flashcard">
+            <div class="fc-top">
+              <span id="fcPos">惯用语</span>
+              <button class="speak-btn" id="fcAudio" type="button" aria-label="朗读当前单词">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5Z"/><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></svg>
+              </button>
+            </div>
+            <div class="fc-center">
+              <h3 id="fcWord" lang="ja">おはようございます</h3>
+              <p class="fc-reading" id="fcReading" lang="ja">おはようございます</p>
+              <button class="reveal-btn" id="revealBtn" type="button" aria-controls="fcAnswer" aria-expanded="false">
+                显示释义与例句 <kbd>Space</kbd>
+              </button>
+              <div class="fc-answer" id="fcAnswer" aria-live="polite" hidden>
+                <p class="fc-meaning" id="fcMeaning"></p>
+                <div class="fc-example">
+                  <span>例</span>
+                  <div>
+                    <p id="fcExample" lang="ja"></p>
+                    <p id="fcExampleZh"></p>
+                  </div>
+                  <button class="example-audio" id="fcExampleAudio" type="button" aria-label="朗读例句">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5Z"/><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <span class="fc-level" id="fcLevel">N5</span>
+            <span class="fc-watermark" aria-hidden="true">ことば</span>
+          </div>
+
+          <button class="arrow-btn" id="nextCard" type="button" aria-label="下一个词">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg>
+          </button>
+        </div>
+
+        <div class="study-actions">
+          <button class="btn btn-ghost" id="markAgainBtn" type="button" title="加入错词集并继续">还不熟</button>
+          <button class="btn btn-primary" id="markLearnedBtn" type="button">记住了 <span aria-hidden="true">✓</span></button>
+        </div>
+        <p class="keyboard-hint">← → 切换 · 空格显示释义 / 下一词 · 还不熟自动收进错词集 · Esc 关闭</p>
+      </div>
+
+      <div class="study-complete" id="studyComplete" aria-live="polite" hidden>
+        <div class="complete-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>
+        </div>
+        <p class="modal-kicker">SESSION COMPLETE</p>
+        <h3>这一轮，收好了。</h3>
+        <p id="completeText">这一轮 5 个词已经收进你的词汇林。</p>
+        <div class="complete-actions">
+          <button class="btn btn-primary" id="restartRound" type="button">再来一轮</button>
+          <button class="btn btn-ghost" type="button" data-close>返回场景</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 小测验 -->
+  <div class="modal" id="quizModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel quiz-panel" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+      <header class="modal-head quiz-modal-head">
+        <div>
+          <p class="modal-kicker" id="quizKicker">N5 · 10 QUESTIONS</p>
+          <h2 id="quizTitle">词汇小测</h2>
+        </div>
+        <button class="close-btn" type="button" data-close aria-label="关闭小测验">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div id="quizStage">
+        <div class="quiz-progress">
+          <div class="progress-label"><span id="quizProgressText">第 1 / 10 题</span><span id="quizScoreText">0 分</span></div>
+          <div class="progress-track"><i id="quizBar"></i></div>
+        </div>
+
+        <div class="question-card">
+          <button class="speak-btn quiz-speak" id="quizAudioBtn" type="button" aria-label="朗读题目单词">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5Z"/><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></svg>
+          </button>
+          <p class="question-label" id="quizQuestionLabel">这个单词是什么意思？</p>
+          <h3 id="quizWord">おはようございます</h3>
+          <p id="quizReading">おはようございます</p>
+        </div>
+
+        <div class="quiz-options" id="quizOptions"></div>
+
+        <button class="quiz-dont-know" id="quizDontKnowBtn" type="button">
+          <span>不会</span>
+          先加入错词集
+        </button>
+
+        <div class="quiz-feedback" id="quizFeedback" role="status" aria-live="polite" hidden>
+          <span class="feedback-icon" id="feedbackIcon" aria-hidden="true">✓</span>
+          <div>
+            <strong id="feedbackTitle">答对了</strong>
+            <p id="feedbackText"></p>
+          </div>
+          <button class="btn btn-small btn-primary" id="nextQuestion" type="button">下一题</button>
+        </div>
+      </div>
+
+      <div class="quiz-result" id="quizResult" aria-live="polite" hidden>
+        <div class="result-ring" id="resultRing"><span id="resultScore">0</span><small>分</small></div>
+        <p class="modal-kicker">RESULT</p>
+        <h3 id="resultTitle">不错，再走一轮。</h3>
+        <p id="resultText">答对 0 / 10 题</p>
+        <div class="result-actions">
+          <button class="btn btn-primary" id="retryQuiz" type="button">再来一次</button>
+          <button class="btn btn-ghost" type="button" data-close>稍后再练</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 错词集 -->
+  <div class="modal" id="wrongModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel wrongbook-panel" role="dialog" aria-modal="true" aria-labelledby="wrongTitle">
+      <header class="modal-head">
+        <div>
+          <p class="modal-kicker">WRONG WORDS</p>
+          <h2 id="wrongTitle">错词集</h2>
+          <p class="modal-sub">测验中答错、选择「不会」，或在闪卡中点「还不熟」的单词会自动归档到这里。</p>
+        </div>
+        <button class="close-btn" type="button" data-close aria-label="关闭错词集">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="wrongbook-toolbar">
+        <div class="wrongbook-levels" id="wrongLevelFilters" role="group" aria-label="按等级筛选错词"></div>
+        <div class="wrongbook-tools">
+          <label class="section-filter wrong-scene-filter" id="wrongSceneFilterWrap">
+            <span>场景</span>
+            <select id="wrongSceneFilter" aria-label="按场景筛选错词"></select>
+          </label>
+          <button class="btn btn-small btn-primary" id="retryWrongBtn" type="button" disabled>重练错词</button>
+        </div>
+      </div>
+
+      <div class="wrongbook-summary">
+        <span id="wrongSummary" aria-live="polite">0 个待复习</span>
+        <button class="wrongbook-clear" id="clearWrongBtn" type="button" disabled>清空</button>
+      </div>
+
+      <div class="wrongbook-list" id="wrongList"></div>
+
+      <div class="wrongbook-empty" id="wrongEmpty" hidden>
+        <span class="empty-mark">空</span>
+        <h3>错词集还是空的</h3>
+        <p>在小测中答错、点「不会」，或在闪卡中点「还不熟」，单词就会自动出现在这里。</p>
+        <button class="btn btn-small btn-outline" id="wrongToQuiz" type="button">去做小测</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 已掌握 -->
+  <div class="modal" id="masteredModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel wrongbook-panel" role="dialog" aria-modal="true" aria-labelledby="masteredTitle">
+      <header class="modal-head">
+        <div>
+          <p class="modal-kicker">MASTERED</p>
+          <h2 id="masteredTitle">已掌握</h2>
+          <p class="modal-sub">在闪卡中点击「记住了」的单词会自动归档到这里，并按等级与场景整理。</p>
+        </div>
+        <button class="close-btn" type="button" data-close aria-label="关闭已掌握">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="wrongbook-toolbar">
+        <div class="wrongbook-levels" id="masteredLevelFilters" role="group" aria-label="按等级筛选已掌握"></div>
+        <div class="wrongbook-tools">
+          <label class="section-filter wrong-scene-filter" id="masteredSceneFilterWrap">
+            <span>场景</span>
+            <select id="masteredSceneFilter" aria-label="按场景筛选已掌握"></select>
+          </label>
+          <button class="btn btn-small btn-primary" id="masteredReviewBtn" type="button" disabled>复习已掌握</button>
+        </div>
+      </div>
+
+      <div class="wrongbook-summary">
+        <span id="masteredSummary" aria-live="polite">0 个已掌握</span>
+      </div>
+
+      <div class="wrongbook-list" id="masteredList"></div>
+
+      <div class="wrongbook-empty" id="masteredEmpty" hidden>
+        <span class="empty-mark">空</span>
+        <h3>还没有已掌握的单词</h3>
+        <p>在闪卡中点击「记住了」，单词就会自动出现在这里。</p>
+        <button class="btn btn-small btn-outline" id="masteredToScenes" type="button">去学习</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mobile-dock" aria-label="手机快捷导航">
+    <a href="#scenes">场景</a>
+    <a href="#library">词汇</a>
+    <a href="#quiz">测验</a>
+    <button type="button" id="mobileWrongBtn">错词 <strong id="mobileWrongCount">0</strong></button>
+    <button type="button" id="mobileMasteredBtn">掌握 <strong id="mobileMasteredCount">0</strong></button>
+  </nav>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="n5-data.js" defer></script>
+  <script src="n4-data.js" defer></script>
+  <script src="n3-data.js" defer></script>
+  <script src="n2-data.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
